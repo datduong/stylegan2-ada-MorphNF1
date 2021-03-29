@@ -11,7 +11,7 @@ module load gcc/8.3.0
 cd /data/duongdb/stylegan2-ada
 
 
-# ! need to train model first, 
+# ! need to train model first !!
 
 #----------------------------------------------------------------------------
 
