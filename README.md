@@ -1,6 +1,6 @@
-## StyleGAN2 applied on small NF1 dataset. 
+## Train StyleGAN2-ada on a small NF1 dataset. 
 
-Please see `MakeNf1Data` folder. Contact us for our pre-trained model. 
+See `MorphNF1`. Contact us for our data and pre-trained model. 
 
 Notable changes (from the original Nvidia source) are 
 
