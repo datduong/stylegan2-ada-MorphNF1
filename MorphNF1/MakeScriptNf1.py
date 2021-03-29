@@ -1,12 +1,6 @@
 import re,sys,os,pickle
 
-
 script="""#!/bin/bash
-
-# sinteractive --time=1:00:00 --gres=gpu:v100x:1 --mem=20g --cpus-per-task=32 
-# sbatch --partition=gpu --time=2-00:00:00 --gres=gpu:p100:2 --mem=24g --cpus-per-task=24 
-# sbatch --partition=gpu --time=2-00:00:00 --gres=gpu:v100x:2 --mem=24g --cpus-per-task=24 
-# sinteractive --time=2:00:00 --gres=gpu:p100:1 --mem=12g --cpus-per-task=12
 
 source /data/$USER/conda/etc/profile.d/conda.sh
 conda activate py37
@@ -15,9 +9,9 @@ module load CUDA/11.0
 module load cuDNN/8.0.3/CUDA-11.0
 module load gcc/8.3.0
 
-
 cd /data/duongdb/stylegan2-ada
 
+# ! make data into tfrecords
 # python dataset_tool.py create_from_images_with_labels /data/duongdb/NF1BeforeAfterInter03182021/Crop/Tfrecord256Label /data/duongdb/NF1BeforeAfterInter03182021/CropImgJpg/ --label_names 'NF1Before,NF1After,NF1Inter' --resolution 256 
 
 # ! training
@@ -38,7 +32,6 @@ python3 train_with_labels.py \
 """
 
 # paper512 auto paper256
-
 # bgcfnc
 
 import time

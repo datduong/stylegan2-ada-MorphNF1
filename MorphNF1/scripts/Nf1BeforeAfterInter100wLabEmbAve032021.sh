@@ -12,33 +12,26 @@ module load CUDA/11.0
 module load cuDNN/8.0.3/CUDA-11.0
 module load gcc/8.3.0
 
-# ! scp over. 
-# for labelname in NF1After NF1Before NF1Inter 
-# do 
-#   scp /data/duongdb/NF1BeforeAfterInter02012021/Crop/$labelname/TrimWhiteSpaceNoBorder/*jpg /data/duongdb/NF1BeforeAfterInter02012021/CropImgJpg/
-# done
-
 
 cd /data/duongdb/stylegan2-ada
-# python dataset_tool.py create_from_images ~/datasets/metfaces ~/downloads/metfaces/images # ! don't need because used the same format as stylegan1/2
 
-# python dataset_tool.py create_from_images /data/duongdb/NF1BeforeAfterInter02012021/Crop/SmallBigGanDataCopy2Tfrecord /data/duongdb/NF1BeforeAfterInter02012021/Crop/SmallBigGanDataCopy2 --resolution 512 # ! has to use 512, because the loaded ffhq1024 is taking 512 input
+# python dataset_tool.py create_from_images_with_labels /data/duongdb/NF1BeforeAfterInter03182021/Crop/Tfrecord256Label /data/duongdb/NF1BeforeAfterInter03182021/CropImgJpg/ --label_names 'NF1Before,NF1After,NF1Inter' --resolution 256 
 
-# python dataset_tool.py create_from_images_with_labels /data/duongdb/NF1BeforeAfterInter02012021/Crop/Tfrecord512wLabel /data/duongdb/NF1BeforeAfterInter02012021/CropImgJpg/ --label_names 'NF1Before,NF1After,NF1Inter' --resolution 512 # ! has to use 512, because the loaded ffhq1024 is taking 512 input
-
-
-# ! doing training
+# ! training
 
 cd /data/duongdb/stylegan2-ada
 python3 train_with_labels.py \
---data=/data/duongdb/NF1BeforeAfterInter02012021/Crop/Tfrecord256wLabel \
+--data=/data/duongdb/NF1BeforeAfterInter03182021/Crop/Tfrecord256Label \
 --gpus=2 \
 --mirror=1 \
 --aug=ada --target=0.7 \
 --augpipe=bgc \
 --metrics=fid100_full \
---outdir=/data/duongdb/NF1BeforeAfterInter02012021/Crop/training-stylegan2-ada-Lab3-aveLabEmb \
---resume=ffhq256 --intermediate_state
+--outdir=/data/duongdb/NF1BeforeAfterInter03182021/Crop/1HotAveEmb \
+--resume=ffhq256 \
+--cfg=paper512 \
+--intermediate_state 
+
 
 # # --snap=10 
 
@@ -47,23 +40,24 @@ python3 train_with_labels.py \
 # ! generate images, using labels indexing
 # ! let's try same random vector, but different label class
 
-path='/data/duongdb/NF1BeforeAfterInter02012021/Crop/training-stylegan2-ada-Lab3-aveLabEmb/00001-Tfrecord256wLabel-mirror-auto2-ada-target0.7-bgc-resumeffhq256'
+path='/data/duongdb/NF1BeforeAfterInter03182021/Crop/1HotAveEmb/00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256'
 model=$path/network-snapshot-000768.pkl ## ! the latest save is bad? 000768 is best
 cd /data/duongdb/stylegan2-ada
 
-truncationpsi=0.7 # @trunc=0.7 is recommended on their face dataset. 
+truncationpsi=0.6 # @trunc=0.7 is recommended on their face dataset. 
 
 for class in 0 1 2 
 do 
-python3 generate.py --outdir=$path/SameZvecClass$class --trunc=$truncationpsi --seeds=0-100 --class=$class --network $model
+python3 generate.py --outdir=$path/SameZvecClass$class --trunc=$truncationpsi --seeds=0-200 --class=$class --network $model
 done 
 
-for mix_ratio in 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+for mix_ratio in 0 0.25 .5 0.75 1
 do 
-python3 generate.py --outdir=$path/SameZvecClass0-1-$mix_ratio --trunc=$truncationpsi --seeds=0-100 --network $model --mix_label --mix_ratio $mix_ratio
+python3 generate.py --outdir=$path/SameZvecMix$mix_ratio --trunc=$truncationpsi --seeds=0-200 --network $model --mix_ratio $mix_ratio --class 0 --class_next 1
 done 
 
-python3 concat_generated_img.py $path 
+cd /data/duongdb/stylegan2-ada
+python3 concat_generated_img.py $path '0 0.25 .5 0.75 1'
 cd $path 
 
 # #----------------------------------------------------------------------------
@@ -76,9 +70,9 @@ module load CUDA/11.0
 module load cuDNN/8.0.3/CUDA-11.0
 module load gcc/8.3.0
 
-maindir='/data/duongdb/NF1BeforeAfterInter02012021/Crop'
+maindir='/data/duongdb/NF1BeforeAfterInter03182021/Crop'
 expterimenttype='training-stylegan2-ada-Lab3-aveLabEmb'
-model_path=$maindir/$expterimenttype/'00001-Tfrecord256wLabel-mirror-auto2-ada-target0.7-bgc-resumeffhq256/network-snapshot-000768.pkl'
+model_path=$maindir/$expterimenttype/'00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256/network-snapshot-000768.pkl'
 
 for imgtype in Before After # Inter
 do 
@@ -91,7 +85,7 @@ do
 done 
 
 # ! project on real images
-recon_img=$maindir/$expterimenttype/'00001-Tfrecord256wLabel-mirror-auto2-ada-target0.7-bgc-resumeffhq256/'
+recon_img=$maindir/$expterimenttype/'00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256/'
 
 rm -rf $recon_img/*project*real* 
 
@@ -104,12 +98,12 @@ done
 
 # ! run interpolation W space
 truncationpsi=0.7 # @trunc=0.7 is recommended on their face dataset. but we were using 0.5
-recon_img=$maindir/$expterimenttype/'00001-Tfrecord256wLabel-mirror-auto2-ada-target0.7-bgc-resumeffhq256/'
+recon_img=$maindir/$expterimenttype/'00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256/'
 
 cd /data/duongdb/stylegan2-ada/Interpolate 
-python3 run_interpolate.py $maindir/$expterimenttype/'00001-Tfrecord256wLabel-mirror-auto2-ada-target0.7-bgc-resumeffhq256/' 'network-snapshot-000768.pkl' $recon_img/'00000-project-real-images' $recon_img/'00001-project-real-images' $truncationpsi
+python3 run_interpolate.py $maindir/$expterimenttype/'00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256/' 'network-snapshot-000768.pkl' $recon_img/'00000-project-real-images' $recon_img/'00001-project-real-images' $truncationpsi
 
-cd $maindir/$expterimenttype/'00001-Tfrecord256wLabel-mirror-auto2-ada-target0.7-bgc-resumeffhq256/' 
+cd $maindir/$expterimenttype/'00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256/' 
 mkdir network-snapshot-000768
 mv $recon_img/'00000-project-real-images' $recon_img/'00001-project-real-images' Same* Interpolate Gen*Interpolate network-snapshot-000768
 
@@ -119,5 +113,5 @@ mv $recon_img/'00000-project-real-images' $recon_img/'00001-project-real-images'
 # # ! interpolate label space. notice something is strange. the images reconstructed is not the same as @generate.py ???
 # cd /data/duongdb/stylegan2-ada/Interpolate 
 # recon_img=/data/duongdb/stylegan2-ada/results
-# python3 run_interpolate_label.py $maindir/$expterimenttype/'00001-Tfrecord256wLabel-mirror-auto2-ada-target0.7-bgc-resumeffhq256/' 'network-snapshot-000768.pkl' 
+# python3 run_interpolate_label.py $maindir/$expterimenttype/'00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256/' 'network-snapshot-000768.pkl' 
 # cd $maindir/$expterimenttype/

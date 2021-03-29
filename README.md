@@ -1,4 +1,10 @@
-## StyleGAN2 with adaptive discriminator augmentation (ADA)<br>&mdash; Official TensorFlow implementation
+## StyleGAN2 applied on small NF1 dataset. 
+
+Please see `MakeNf1Data` folder. Contact us for our pre-trained model. 
+
+Notable change is `dense_layer_with_average` in `training/networks.py`. 
+
+## (Original readme) StyleGAN2 with adaptive discriminator augmentation (ADA)<br>&mdash; Official TensorFlow implementation
 
 ![Teaser image](./docs/stylegan2-ada-teaser-1024x252.png)
 
