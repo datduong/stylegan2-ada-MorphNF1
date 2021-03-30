@@ -4,7 +4,7 @@
 
 **[See some examples of NF1 images.](https://dermnetnz.org/topics/neurofibromatosis-images/)**
 
-To train `MorphNF1`. Contact us for our data and pre-trained model. 
+To train, see `MorphNF1`. Contact us for our data and pre-trained model. 
 
 Notable changes (from the original Nvidia source) are 
 
