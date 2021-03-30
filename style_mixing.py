@@ -21,7 +21,7 @@ import dnnlib.tflib as tflib
 
 #----------------------------------------------------------------------------
 
-def style_mixing_example(network_pkl, row_seeds, col_seeds, truncation_psi, col_styles, outdir, minibatch_size=4):
+def style_mixing_example(network_pkl, row_seeds, col_seeds, truncation_psi, col_styles, outdir, minibatch_size=4, class_idx=None, num_labels=7):
     tflib.init_tf()
     print('Loading networks from "%s"...' % network_pkl)
     with dnnlib.util.open_url(network_pkl) as fp:
@@ -37,7 +37,15 @@ def style_mixing_example(network_pkl, row_seeds, col_seeds, truncation_psi, col_
     print('Generating W vectors...') # ! by default, looks like @labels are not used. 
     all_seeds = list(set(row_seeds + col_seeds))
     all_z = np.stack([np.random.RandomState(seed).randn(*Gs.input_shape[1:]) for seed in all_seeds]) # [minibatch, component]
-    all_w = Gs.components.mapping.run(all_z, None) # [minibatch, layer, component]
+
+    # ! add in labels 
+    if class_idx is not None: 
+        all_labels = np.zeros((len(all_seeds), num_labels)) # [minibatch, component] for example, this is 16xnum_labels (1-hot)
+        all_labels[:, class_idx] = 1
+    else: 
+        all_labels = None
+
+    all_w = Gs.components.mapping.run(all_z, all_labels) # [minibatch, layer, component]
     all_w = w_avg + (all_w - w_avg) * truncation_psi # [minibatch, layer, component]
     w_dict = {seed: w for seed, w in zip(all_seeds, list(all_w))} # [layer, component]
 
@@ -71,7 +79,9 @@ def style_mixing_example(network_pkl, row_seeds, col_seeds, truncation_psi, col_
             if col_seed is None:
                 key = (row_seed, row_seed)
             canvas.paste(PIL.Image.fromarray(image_dict[key], 'RGB'), (W * col_idx, H * row_idx))
-    canvas.save(f'{outdir}/grid.png')
+    # ! suffix 
+    suffix = '' if all_labels is None else str(class_idx)
+    canvas.save(f'{outdir}/grid{suffix}.png')
 
 #----------------------------------------------------------------------------
 
@@ -108,6 +118,7 @@ def main():
     parser.add_argument('--styles', dest='col_styles', type=_parse_num_range, help='Style layer range (default: %(default)s)', default='0-6')
     parser.add_argument('--trunc', dest='truncation_psi', type=float, help='Truncation psi (default: %(default)s)', default=0.5)
     parser.add_argument('--outdir', help='Where to save the output images', required=True, metavar='DIR')
+    parser.add_argument('--class', dest='class_idx', type=int, help='Class index (default: %(default)s)', default=None)
 
     args = parser.parse_args()
     style_mixing_example(**vars(args))
