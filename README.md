@@ -1,6 +1,8 @@
 ## Train StyleGAN2-ada on a small NF1 dataset. 
 
-[What is NF1?](https://www.cancer.net/cancer-types/neurofibromatosis-type-1)
+**[What is NF1?](https://www.cancer.net/cancer-types/neurofibromatosis-type-1)**
+
+**[See some examples of NF1 images.](https://dermnetnz.org/topics/neurofibromatosis-images/)**
 
 To train `MorphNF1`. Contact us for our data and pre-trained model. 
 
