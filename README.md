@@ -10,7 +10,7 @@ Notable changes (from the original Nvidia source) are
 
 * `dense_layer_with_average` in `training/networks.py`. 
 * `train_with_labels.py`.
-* Some parts of `generate.py`. 
+* Some parts of `generate.py` and `style_mixing.py`.
 
 ## (Original readme) StyleGAN2 with adaptive discriminator augmentation (ADA)<br>&mdash; Official TensorFlow implementation
 
