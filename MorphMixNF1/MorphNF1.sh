@@ -8,9 +8,6 @@ module load CUDA/11.0
 module load cuDNN/8.0.3/CUDA-11.0
 module load gcc/8.3.0
 
-cd /data/duongdb/stylegan2-ada
-
-
 # ! need to train model first !!
 
 #----------------------------------------------------------------------------
@@ -18,9 +15,13 @@ cd /data/duongdb/stylegan2-ada
 # ! generate images, using labels indexing
 # ! let's try same random vector, but different label class
 
-path='/data/duongdb/NF1BeforeAfterInter03182021/Crop/1HotAveEmb/00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256'
+workdir=/data/duongdb/DeployOnline/stylegan2-ada-MorphNF1
+our_data_path=$workdir/Example
+
+path=$our_data_path/Model/00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256
 model=$path/network-snapshot-000768.pkl ## ! load model
-cd /data/duongdb/stylegan2-ada
+
+cd $workdir
 
 truncationpsi=0.6 # @trunc=0.7 is recommended on their face dataset. 
 
@@ -34,7 +35,7 @@ do
 python3 generate.py --outdir=$path/SameZvecMix$mix_ratio --trunc=$truncationpsi --seeds=0-200 --network $model --mix_ratio $mix_ratio --class 0 --class_next 1
 done 
 
-cd /data/duongdb/stylegan2-ada
+cd $workdir
 python3 concat_generated_img.py $path '0 0.25 .5 0.75 1'
 cd $path 
 

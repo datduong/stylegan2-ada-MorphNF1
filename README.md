@@ -1,18 +1,37 @@
-## Train StyleGAN2-ada on a small NF1 dataset. 
+## StyleGAN2-ada on a small NF1 dataset. 
+
 
 **[Our current paper.](https://www.medrxiv.org/content/10.1101/2021.04.08.21255123v1)**
 
+
 **[What is NF1?](https://www.cancer.net/cancer-types/neurofibromatosis-type-1)**
+
 
 **[See some examples of NF1 images.](https://dermnetnz.org/topics/neurofibromatosis-images/)**
 
-To train, see `MorphMixNF1`. Contact us for our data and pre-trained model. 
 
-Notable changes (from the original Nvidia source) are 
+Notable changes from the original Nvidia source are below, however, you will not need to read the source codes.  
 
 * `dense_layer_with_average` in `training/networks.py`. 
 * `train_with_labels.py`.
 * Some parts of `generate.py` and `style_mixing.py`.
+
+### Train StyleGAN2-ada on a our NF1 dataset. 
+
+This code exactly follows how the original StyleGAN2 formats and trains the data. I recommend that you read their original instruction (included below) for more detail. Here, we will show you the key steps needed to train on NF1 dataset. 
+
+Contact us for our data. I will put the NF1 data in the folder `Example/`, if needed, please change this path to your own path on your machine. StyleGAN2 takes in images in tensorflow records (see the video below). 
+
+Use the MorphMixNF1/TrainNf1.py to create training script. Please note [change the path here]() to your own folder on your machine. 
+  - The video below shows how the training looks. 
+
+
+You can also [download our pretrained model]() and then run image generation and morphing like in the video below. You can run: 
+  - Model trained on early/intermediate/late NF1 condition.
+  - Model trained on ML NF1 HMI IP MA TSC and Other conditions. 
+  - Example videos. 
+
+
 
 ## (Original readme) StyleGAN2 with adaptive discriminator augmentation (ADA)<br>&mdash; Official TensorFlow implementation
 
