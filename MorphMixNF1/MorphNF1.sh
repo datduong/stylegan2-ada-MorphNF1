@@ -18,7 +18,7 @@ module load gcc/8.3.0
 workdir=/data/duongdb/DeployOnline/stylegan2-ada-MorphNF1
 our_data_path=$workdir/Example
 
-path=$our_data_path/Model/00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256
+path=$our_data_path/EarlyInterLateNF1Model/00001-Tfrecord256Label-mirror-auto2-ada-target0.7-bgc-resumeffhq256
 model=$path/network-snapshot-000768.pkl ## ! load model
 
 cd $workdir

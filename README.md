@@ -20,13 +20,21 @@ Notable changes from the original Nvidia source are below, however, you will not
 
 This code exactly follows how the original StyleGAN2 formats and trains the data. I recommend that you read their original instruction (included below) for more detail. Here, we will show you the key steps needed to train on NF1 dataset. 
 
-Contact us for our data. I will put the NF1 data in the folder `Example/`, if needed, please change this path to your own path on your machine. StyleGAN2 takes in images in tensorflow records (see the video below). 
+Contact us for our data. I will put the NF1 data in the folder `Example/`, if needed, please change this path to your own path on your machine. StyleGAN2 takes in images in tensorflow records (see the video below). There are 2 datasets:
+
+  - Images of early/intermediate/late NF1 condition.
+  - Images of NF1 and these 6 conditions: ML HMI IP MA TSC and Other. 
+  - Video 
+  [![asciicast](https://asciinema.org/a/416784.svg)](https://asciinema.org/a/416784)
+
 
 Use the MorphMixNF1/TrainNf1.py to create training script. Please note [change the path here]() to your own folder on your machine. 
-  - The video below shows how the training looks. 
+  - Use the script `MorphMixNF1/Train7conditions/Train7conditions.sh` to train NF1 and these 6 conditions: ML HMI IP MA TSC and Other. [Please change the work directory here](). 
+  - The video below shows how the training looks for `early/intermediate/late NF1 condition` with the script `MorphMixNF1/TrainNf1.py`.
 
 
-You can also [download our pretrained model]() and then run image generation and morphing like in the video below. You can run: 
+
+You can also [download our pretrained model]() and then run image generation and morphing like in the video below. There are 2 models 
   - Model trained on early/intermediate/late NF1 condition.
   - Model trained on ML NF1 HMI IP MA TSC and Other conditions. 
   - Example videos. 

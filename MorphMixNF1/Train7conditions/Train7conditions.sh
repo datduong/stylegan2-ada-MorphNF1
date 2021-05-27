@@ -25,25 +25,25 @@ our_data_path=$workdir/Example
 # ! make tfrecords
 # cd $workdir
 # resolution=512
-# python dataset_tool.py create_from_images_with_labels $our_data_path/Tfrecord$resolution'wLabel' $our_data_path/CropImgJpg --label_names 'EverythingElse,ML,NF1,HMI,IP,MA,TSC' --resolution $resolution 
+# python dataset_tool.py create_from_images_with_labels $our_data_path/NF1And6OtherConditions/Tfrecord$resolution'wLabel' $our_data_path/NF1And6OtherConditions/CropImgJpg --label_names 'EverythingElse,ML,NF1,HMI,IP,MA,TSC' --resolution $resolution 
 
 # ! training
 # ! use bgc or bgcfnc ?
 cd $workdir
 python3 train_with_labels.py \
---data=$our_data_path/Tfrecord256wLabel \
+--data=$our_data_path/NF1And6OtherConditions/Tfrecord256wLabel \
 --gpus=2 \
 --mirror=1 \
 --aug=ada --target=0.7 \
 --augpipe=bgc \
 --metrics=fid200_full \
---outdir=$our_data_path/Model7Conditions \
+--outdir=$our_data_path/NF1And6OtherConditionsModel \
 --resume=ffhq256 
 
 # ! generate images, using labels indexing
 # ! let's try same random vector, but different label class
 
-path=$our_data_path/Model7Conditions/00000-Tfrecord256wLabel-mirror-auto2-ada-target0.7-bgc-resumeffhq256
+path=$our_data_path/NF1And6OtherConditionsModel/00000-Tfrecord256wLabel-mirror-auto2-ada-target0.7-bgc-resumeffhq256
 model=$path/network-snapshot-000768.pkl
 
 cd $workdir
