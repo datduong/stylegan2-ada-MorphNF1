@@ -49,7 +49,7 @@ workdir = '/data/duongdb/DeployOnline/stylegan2-ada-MorphNF1'
 os.chdir(workdir)
 counter = 1
 
-for CONFIG in ['paper256'] : 
+for CONFIG in ['auto'] : # ! you can try other config, but we stick with "auto"
   newscript = re.sub('CONFIG',str(CONFIG),script)
   newscript = re.sub('WORKDIR',str(workdir),newscript)
   fname = 'script'+str(counter+1)+date_time+'.sh'
