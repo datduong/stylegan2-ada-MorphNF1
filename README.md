@@ -30,8 +30,8 @@ Contact us for our data. I will put the NF1 data in the folder `Example/`, if ne
 
 
 **Now, you can train the model.** We used 2 GPUs (Nvidia p100) to train the model. 
-  - Use `MorphMixNF1/TrainNf1.py` to create training script. Please note [change the path here]() to your own folder on your machine. For me, the result will be saved in `Example/EarlyInterLateNF1Model`. 
-  - Use the script `MorphMixNF1/Train7conditions/Train7conditions.sh` to train NF1 and these 6 conditions: ML HMI IP MA TSC and Other. [Please change the work directory here](). 
+  - Use `MorphMixNF1/TrainNf1.py` to create training script. Please note [change the path here](https://github.com/datduong/stylegan2-ada-MorphNF1/blob/master/MorphMixNF1/TrainNf1.py#L47) to your own folder on your machine. For me, the result will be saved in `Example/EarlyInterLateNF1Model`. 
+  - Use the script `MorphMixNF1/Train7conditions/Train7conditions.sh` to train NF1 and these 6 conditions: ML HMI IP MA TSC and Other. [Please change the work directory here](https://github.com/datduong/stylegan2-ada-MorphNF1/blob/master/MorphMixNF1/Train7conditions/Train7conditions.sh#L16). 
   - The video below shows how the training looks for `early/intermediate/late NF1 condition` with the script `MorphMixNF1/TrainNf1.py`. The training will take at least 12 hrs. 
 
 [![asciicast](https://asciinema.org/a/416797.svg)](https://asciinema.org/a/416797)
@@ -39,7 +39,7 @@ Contact us for our data. I will put the NF1 data in the folder `Example/`, if ne
 You can also [download our pretrained model](https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing) and then run image generation and morphing like in the video below. There are 2 models:  
   - Model trained on early/intermediate/late NF1 condition.
   - Model trained on ML NF1 HMI IP MA TSC and Other conditions. 
-  - Video shows where to put pre-trained model and generate images. Here I choose to download the model into the folder in the folder `Example/EarlyInterLateNF1Model`. The script used is `MorphMixNF1/MorphNF1.sh`. Please note, you may need to [change model path here]()
+  - Video shows where to put pre-trained model and generate images. Here I choose to download the model into the folder in the folder `Example/EarlyInterLateNF1Model`. The script used is `MorphMixNF1/MorphNF1.sh`. Please note, you may need to [change model path here](https://github.com/datduong/stylegan2-ada-MorphNF1/blob/master/MorphMixNF1/MorphNF1.sh#L21).
 
 [![asciicast](https://asciinema.org/a/416807.svg)](https://asciinema.org/a/416807)
 
