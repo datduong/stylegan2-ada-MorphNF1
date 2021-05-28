@@ -9,6 +9,7 @@
 
 **[See some examples of NF1 images.](https://dermnetnz.org/topics/neurofibromatosis-images/)**
 
+**[These are our pre-trained models, more instruction below.](https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing) **
 
 Notable changes from the original Nvidia source are below, however, you will not need to read the source codes.  
 
@@ -36,7 +37,8 @@ Contact us for our data. I will put the NF1 data in the folder `Example/`, if ne
 
 [![asciicast](https://asciinema.org/a/416797.svg)](https://asciinema.org/a/416797)
 
-You can also [download our pretrained model](https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing) and then run image generation and morphing like in the video below. There are 2 models:  
+### Pre-trained models
+You can also [download our pre-trained models](https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing) and then run image generation and morphing like in the video below. There are 2 models:  
   - Model trained on early/intermediate/late NF1 condition.
   - Model trained on ML NF1 HMI IP MA TSC and Other conditions. 
   - Video shows where to put pre-trained model and generate images. Here I choose to download the model into the folder in the folder `Example/EarlyInterLateNF1Model`. After you download the pre-trained model, the script used to generate fake images is `MorphMixNF1/MorphNF1.sh`. Please note, you may need to [change model path here](https://github.com/datduong/stylegan2-ada-MorphNF1/blob/master/MorphMixNF1/MorphNF1.sh#L21).
