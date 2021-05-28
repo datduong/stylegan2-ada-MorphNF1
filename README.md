@@ -12,8 +12,8 @@
 
 Notable changes from the original Nvidia source are below, however, you will not need to read the source codes.  
 
-* `dense_layer_with_average` in `training/networks.py`. 
-* `train_with_labels.py`.
+* [`dense_layer_with_average`](https://github.com/datduong/stylegan2-ada-MorphNF1/blob/master/training/networks.py#L65) in `training/networks.py`. 
+* [`train_with_labels.py`](https://github.com/datduong/stylegan2-ada-MorphNF1/blob/master/train_with_labels.py).
 * Some parts of `generate.py` and `style_mixing.py`.
 
 ### Train StyleGAN2-ada on a our NF1 dataset. 
