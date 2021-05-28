@@ -24,7 +24,7 @@ Contact us for our data. I will put the NF1 data in the folder `Example/`, if ne
 
   - Images of early/intermediate/late NF1 condition.
   - Images of NF1 and these 6 conditions: ML HMI IP MA TSC and Other. 
-  - Video 
+  - Video below shows how the data folder must look like. 
 
 [![asciicast](https://asciinema.org/a/416784.svg)](https://asciinema.org/a/416784)
 
@@ -32,14 +32,14 @@ Contact us for our data. I will put the NF1 data in the folder `Example/`, if ne
 **Now, you can train the model.** We used 2 GPUs (Nvidia p100) to train the model. 
   - Use `MorphMixNF1/TrainNf1.py` to create training script. Please note [change the path here]() to your own folder on your machine. 
   - Use the script `MorphMixNF1/Train7conditions/Train7conditions.sh` to train NF1 and these 6 conditions: ML HMI IP MA TSC and Other. [Please change the work directory here](). 
-  - The video below shows how the training looks for `early/intermediate/late NF1 condition` with the script `MorphMixNF1/TrainNf1.py`. The training will take at least 8 hrs. 
+  - The video below shows how the training looks for `early/intermediate/late NF1 condition` with the script `MorphMixNF1/TrainNf1.py`. The training will take at least 12 hrs. 
 
 [![asciicast](https://asciinema.org/a/416797.svg)](https://asciinema.org/a/416797)
 
-You can also [download our pretrained model](https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing) and then run image generation and morphing like in the video below. There are 2 models 
+You can also [download our pretrained model](https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing) and then run image generation and morphing like in the video below. There are 2 models:  
   - Model trained on early/intermediate/late NF1 condition.
   - Model trained on ML NF1 HMI IP MA TSC and Other conditions. 
-  - Example videos. 
+  - Video shows where to put pre-trained model and generate images. 
 
 
 
