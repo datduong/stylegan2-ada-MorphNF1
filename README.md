@@ -43,7 +43,7 @@ You can also [download our pretrained model](https://drive.google.com/drive/fold
 
 [![asciicast](https://asciinema.org/a/416807.svg)](https://asciinema.org/a/416807)
 
-
+<script id="asciicast-416807" src="https://asciinema.org/a/416807.js" async></script>
 ## (Original readme) StyleGAN2 with adaptive discriminator augmentation (ADA)<br>&mdash; Official TensorFlow implementation
 
 ![Teaser image](./docs/stylegan2-ada-teaser-1024x252.png)
