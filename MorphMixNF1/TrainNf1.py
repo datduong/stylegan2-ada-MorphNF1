@@ -30,7 +30,6 @@ python3 train_with_labels.py \
 --mirror=1 \
 --aug=ada --target=0.7 \
 --augpipe=bgc \
---metrics=kid50k_full,fid50k_full \
 --outdir=$our_data_path/EarlyInterLateNF1Model \
 --resume=ffhq256 \
 --cfg=CONFIG \
