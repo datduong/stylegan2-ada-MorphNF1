@@ -39,11 +39,11 @@ Contact us for our data. I will put the NF1 data in the folder `Example/`, if ne
 You can also [download our pretrained model](https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing) and then run image generation and morphing like in the video below. There are 2 models:  
   - Model trained on early/intermediate/late NF1 condition.
   - Model trained on ML NF1 HMI IP MA TSC and Other conditions. 
-  - Video shows where to put pre-trained model and generate images. Here I choose to download the model into the folder in the folder `Example/EarlyInterLateNF1Model`. The script used is `MorphMixNF1/MorphNF1.sh`. Please note, you may need to [change model path here](https://github.com/datduong/stylegan2-ada-MorphNF1/blob/master/MorphMixNF1/MorphNF1.sh#L21).
+  - Video shows where to put pre-trained model and generate images. Here I choose to download the model into the folder in the folder `Example/EarlyInterLateNF1Model`. After you download the pre-trained model, the script used to generate fake images is `MorphMixNF1/MorphNF1.sh`. Please note, you may need to [change model path here](https://github.com/datduong/stylegan2-ada-MorphNF1/blob/master/MorphMixNF1/MorphNF1.sh#L21).
 
 [![asciicast](https://asciinema.org/a/416807.svg)](https://asciinema.org/a/416807)
 
-<script id="asciicast-416807" src="https://asciinema.org/a/416807.js" async></script>
+
 ## (Original readme) StyleGAN2 with adaptive discriminator augmentation (ADA)<br>&mdash; Official TensorFlow implementation
 
 ![Teaser image](./docs/stylegan2-ada-teaser-1024x252.png)
