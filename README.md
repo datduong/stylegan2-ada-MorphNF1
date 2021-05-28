@@ -1,15 +1,15 @@
 ## StyleGAN2-ada on a small NF1 dataset. 
 
 
-**[Our current paper.](https://www.medrxiv.org/content/10.1101/2021.04.08.21255123v1)**
+**[Our current paper.]**(https://www.medrxiv.org/content/10.1101/2021.04.08.21255123v1)
 
 
-**[What is NF1?](https://www.cancer.net/cancer-types/neurofibromatosis-type-1)**
+**[What is NF1?]**(https://www.cancer.net/cancer-types/neurofibromatosis-type-1)
 
 
-**[See some examples of NF1 images.](https://dermnetnz.org/topics/neurofibromatosis-images/)**
+**[See some examples of NF1 images.]**(https://dermnetnz.org/topics/neurofibromatosis-images/)**
 
-**[These are our pre-trained models, more instruction below.](https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing) **
+**[These are our pre-trained models, more instruction below.]**(https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing) 
 
 Notable changes from the original Nvidia source are below, however, you will not need to read the source codes.  
 
