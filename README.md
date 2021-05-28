@@ -17,7 +17,7 @@ Notable changes from the original Nvidia source are below, however, you will not
 * [`train_with_labels.py`](https://github.com/datduong/stylegan2-ada-MorphNF1/blob/master/train_with_labels.py).
 * Some parts of `generate.py` and `style_mixing.py`.
 
-### Train StyleGAN2-ada on a our NF1 dataset. 
+### Train StyleGAN2-ada on our NF1 dataset. 
 
 This code exactly follows how the original StyleGAN2 formats and trains the data. I recommend that you read their original instruction (included below) for more detail. Here, we will show you the key steps needed to train on NF1 dataset. 
 
