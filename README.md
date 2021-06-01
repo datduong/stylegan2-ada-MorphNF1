@@ -9,6 +9,10 @@
 
 **[See some examples of NF1 images.](https://dermnetnz.org/topics/neurofibromatosis-images/)**
 
+
+We make the publicly available images included in our analyses available for the purpose of reproducibility and research, with the assumption that these would not be used for commercial or other purposes that would not be considered fair use. **[Download the data here]()**. 
+
+
 **[These are our pre-trained models, more instruction below.](https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing)**
 
 Notable changes from the original Nvidia source are below, however, you will not need to read the source codes.  
