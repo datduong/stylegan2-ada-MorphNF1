@@ -10,7 +10,7 @@
 **[See some examples of NF1 images.](https://dermnetnz.org/topics/neurofibromatosis-images/)**
 
 
-We make the publicly available images included in our analyses available for the purpose of reproducibility and research, with the assumption that these would not be used for commercial or other purposes that would not be considered fair use. **[Download the data here](http://doi.org/10.5281/zenodo.4891877)**. 
+We make the versions of the publicly available images included in our analyses available for the purpose of reproducibility and research, with the assumption that these would not be used for purposes that would not be considered fair use. These data were compiled to produce a new, derivative work, which we offer as a whole. We cannot share the original images and related data with requestors, but have provided links to the URLs in the manuscript describing this work. We cannot guarantee that the URLs or images are accurate or up-to-date, and encourage interested parties to refer to the sources. **[Download the data here](https://figshare.com/articles/figure/NF1-and-related-diseases-images_zip/14721051)**. 
 
 
 **[These are our pre-trained models, more instruction below.](https://drive.google.com/drive/folders/1E_X_G4JkEH6BzTG0DWLxOjnr3J7cgT6V?usp=sharing)**
