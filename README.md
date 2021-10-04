@@ -25,7 +25,7 @@ Notable changes from the original Nvidia source are below, however, you will not
 
 This code exactly follows how the original StyleGAN2 formats and trains the data. I recommend that you read their original instruction (included below) for more detail. Here, we will show you the key steps needed to train on NF1 dataset. 
 
-Contact us for our data. I will put the NF1 data in the folder `Example/`, if needed, please change this path to your own path on your machine. StyleGAN2 takes in images in tensorflow records (see the video below). There are 2 datasets:
+In this example, I will put the NF1 data in the folder `Example/`, if needed, please change this path to your own path on your machine. StyleGAN2 takes in images in tensorflow records (see the video below). There are 2 datasets:
 
   - Images of early/intermediate/late NF1 condition.
   - Images of NF1 and these 6 conditions: ML HMI IP MA TSC and Other. 
